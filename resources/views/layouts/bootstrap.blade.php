@@ -18,6 +18,11 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     @auth
+                        @if(auth()->user()->is_admin)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.dashboard') }}">Admin Panel</a>
+                        </li>
+                        @endif
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('dashboard') }}">Dashboard</a>
                         </li>
@@ -31,6 +36,9 @@
                             </form>
                         </li>
                     @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">Admin Login</a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('login') }}">Login</a>
                         </li>
